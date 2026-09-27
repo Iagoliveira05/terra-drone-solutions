@@ -17,6 +17,7 @@ export type GalleryItem = {
   title: string;
   caption: string;
   tag: "Pulverização" | "Mapeamento" | "Topografia" | "Atendimento";
+  objectPosition?: string;
 };
 
 const g = (
@@ -123,12 +124,13 @@ export const GALLERY: GalleryItem[] = [
       "Equipamento preparado para uma operação precisa, com planejamento adaptado às condições da lavoura.",
     tag: "Pulverização",
   }),
-  g("drone-equipamento-campo", 900, 0.563, {
-    alt: "Drone agrícola apresentado em área rural",
-    title: "Tecnologia pronta para o campo",
+  g("atendimento-exapicor", 900, 0.563, {
+    alt: "Boné com a marca Terra Drone Solutions em frente ao galpão de agroindústria da Exapicor",
+    title: "Presença na Exapicor",
     caption:
-      "Um olhar mais próximo sobre o equipamento usado nas operações da Terra Drone Solutions.",
+      "A Terra Drone Solutions presente nos encontros que movimentam o agro da região.",
     tag: "Atendimento",
+    objectPosition: "center 60%",
   }),
 ];
 

@@ -230,7 +230,7 @@ export const REGIONS: Region[] = [
   },
   {
     name: "Lorena - SP",
-    role: "Polo regional",
+    role: "Sede",
     description:
       "Atendimento no Vale do Paraíba paulista, com deslocamento rápido a fazendas de Guaratinguetá e Cruzeiro.",
     highlight: true,

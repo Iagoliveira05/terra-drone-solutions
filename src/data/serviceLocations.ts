@@ -20,7 +20,7 @@ export const SERVICE_LOCATIONS = [
   {
     "id": "lorena",
     "name": "Lorena - SP",
-    "role": "Polo regional",
+    "role": "Sede",
     "latitude": -22.7272,
     "longitude": -45.12,
     "radiusKm": 29,

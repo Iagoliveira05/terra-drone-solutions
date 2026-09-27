@@ -179,10 +179,10 @@ function Slide({ item }: { item: GalleryItem }) {
         width={item.width}
         height={Math.round(item.width / item.ratio)}
         decoding="async"
+        style={{ objectPosition: item.objectPosition }}
         className="aspect-4/3 w-full object-cover transition duration-700 group-hover:scale-105"
       />
 
-      {/* Etiqueta sobre a foto */}
       <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-agro-950/95 via-agro-950/55 to-transparent p-3 sm:p-5">
         <h3 className="mt-1.5 text-sm leading-tight font-bold text-white sm:text-base">
           {item.title}
