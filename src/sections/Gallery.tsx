@@ -10,7 +10,7 @@ export function Gallery() {
         <Reveal>
           <SectionHeading
             eyebrow="Galeria"
-            title={<>Trabalho de campo</>}
+            title={<>Drones agrícolas em campo</>}
             description="Operações reais na região: pulverização em lavouras, encostas e pastagens, e a equipe que atende cada produtor."
           />
         </Reveal>

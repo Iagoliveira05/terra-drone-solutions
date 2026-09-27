@@ -82,9 +82,9 @@ export type Service = {
 export const SERVICES: Service[] = [
   {
     id: "pulverizacao",
-    title: "Pulverização de precisão",
+    title: "Pulverização agrícola com drones",
     description:
-      "Aplicação aérea de defensivos e fertilizantes com bicos de baixa deriva, calibrados area a area.",
+      "Aplicação aérea de defensivos e fertilizantes com bicos de baixa deriva, calibrados para cada área.",
     bullets: [
       "Bicos antideriva: o vento não desloca a calda",
       "Dose certa, sem superdosagem",
@@ -106,9 +106,9 @@ export const SERVICES: Service[] = [
   },
   {
     id: "mapeamento",
-    title: "Mapeamento e monitoramento",
+    title: "Mapeamento aéreo e NDVI",
     description:
-      "Voo com sensores multiespectrais, imagens áreas e índices NDVI para saber exatamente onde a lavoura está fraquecendo.",
+      "Voo com sensores multiespectrais, imagens aéreas e índices NDVI para saber exatamente onde a lavoura está fraquecendo.",
     bullets: [
       "NDVI e mapas de zoneamento agrícola",
       "Relatório com layer de corte por talhão",
@@ -118,7 +118,7 @@ export const SERVICES: Service[] = [
   },
   {
     id: "topografia",
-    title: "Topografia e cartografia",
+    title: "Topografia com drones e cartografia",
     description:
       "Levantamento topográfico, volumetria de barragens e curvas de nível para plantio direto, com precisão centimétrica.",
     bullets: [

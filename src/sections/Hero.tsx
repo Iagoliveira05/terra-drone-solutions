@@ -45,7 +45,7 @@ export function Hero() {
                   />
                 </svg>
               </span>{" "}
-              que chega em cada metro quadrado da sua fazenda.
+              em Resende e no Vale do Paraíba.
             </h1>
           </Reveal>
 

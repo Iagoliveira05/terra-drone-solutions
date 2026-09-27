@@ -23,7 +23,7 @@ export function Reveal({
 
   useEffect(() => {
     const node = ref.current;
-    if (!node) return;
+    if (!node || !("IntersectionObserver" in window)) return;
 
     // Elemento já visível no carregamento: evita esperar o scroll.
     const observer = new IntersectionObserver(
@@ -46,7 +46,7 @@ export function Reveal({
     <Tag
       ref={ref as never}
       style={visible ? { animationDelay: `${delay}ms` } : undefined}
-      className={`${visible ? "animate-reveal" : "opacity-0"} ${className}`}
+      className={`${visible ? "animate-reveal" : ""} ${className}`}
     >
       {children}
     </Tag>

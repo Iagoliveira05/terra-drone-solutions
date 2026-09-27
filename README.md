@@ -34,3 +34,11 @@ npm run build    # Verifica os tipos e gera a versão de produção em dist/
 npm run preview  # Abre localmente a versão de produção
 npm run lint     # Executa o ESLint
 ```
+
+## SEO e publicação
+
+O build pré-renderiza a página React em HTML e gera dados estruturados de empresa e serviços, robots.txt e sitemap.xml em dist/. O conteúdo principal pode ser lido sem executar JavaScript; a hidratação mantém os controles interativos.
+
+O domínio oficial é https://terra-drone-solutions.vercel.app/ e está definido no canonical de index.html. Ao mudar de domínio, atualize também as URLs Open Graph e Twitter nesse arquivo; o sitemap e os dados estruturados usam o canonical automaticamente. Dados de contato e serviços vêm de src/data/site.ts.
+
+Após publicar, confirme o domínio no Google Search Console, envie /sitemap.xml e solicite a indexação da página inicial. Confira endereço, CEP e municípios atendidos antes de publicar e mantenha os mesmos dados no Perfil da Empresa no Google. A indexação e a posição nos resultados dependem do Google; as alterações não garantem posições.

@@ -24,8 +24,8 @@ export function Services() {
             eyebrow="Serviços"
             title={
               <>
-                Quatro frentes,{" "}
-                <span className="text-agro-600">um só operador aéreo</span>
+                Serviços com drones{" "}
+                <span className="text-agro-600">para o agronegócio</span>
               </>
             }
             description="Do diagnóstico da lavoura ao levantamento do terreno: um drone, várias respostas para o produtor rural."
@@ -38,6 +38,7 @@ export function Services() {
             return (
               <Reveal as="li" key={service.id} delay={index * 80}>
                 <article
+                  id={service.id}
                   className={`card-base group h-full p-6 sm:p-7 ${accent.glow}`}
                 >
                   <span
