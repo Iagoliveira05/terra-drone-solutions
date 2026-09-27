@@ -37,6 +37,8 @@ npm run lint     # Executa o ESLint
 
 ## SEO e publicação
 
+O mapa da área de atuação usa Leaflet com mapas do OpenStreetMap e carrega quando a seção se aproxima da tela. Os marcadores ficam em `src/data/serviceLocations.ts`; cadastre apenas cidades de atuação confirmada, com coordenadas de referência do município. `src/data/coverageGeometry.ts` contém os contornos municipais do IBGE já unidos, preservando as áreas separadas. Para atualizar a geometria após alterar os municípios, execute node scripts/update-coverage.mjs. Os nomes das cidades aparecem nos marcadores; a descrição da seção identifica somente Resende como sede. A atribuição do OpenStreetMap deve permanecer visível.
+
 O build pré-renderiza a página React em HTML e gera dados estruturados de empresa e serviços, robots.txt e sitemap.xml em dist/. O conteúdo principal pode ser lido sem executar JavaScript; a hidratação mantém os controles interativos.
 
 O domínio oficial é https://terra-drone-solutions.vercel.app/ e está definido no canonical de index.html. Ao mudar de domínio, atualize também as URLs Open Graph e Twitter nesse arquivo; o sitemap e os dados estruturados usam o canonical automaticamente. Dados de contato e serviços vêm de src/data/site.ts.

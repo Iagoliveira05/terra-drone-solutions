@@ -1,5 +1,57 @@
 @import "tailwindcss";
 
+.service-map-coverage {
+  animation: coverage-breathe 6s ease-in-out infinite;
+}
+
+.service-map-flow {
+  animation: coverage-flow 36s linear infinite;
+}
+
+@keyframes coverage-breathe {
+  0%, 100% { fill-opacity: 0.28; }
+  50% { fill-opacity: 0.36; }
+}
+
+@keyframes coverage-flow {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: -192; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-map-coverage,
+  .service-map-flow {
+    animation: none;
+  }
+}
+
+.leaflet-tooltip.service-map-headquarters {
+  border: 1px solid #2f5d18;
+  border-radius: 8px;
+  background: #1f3c18;
+  color: white;
+  padding: 8px 12px;
+  font: 700 13px "Plus Jakarta Sans", sans-serif;
+}
+
+.leaflet-tooltip-top.service-map-headquarters::before {
+  border-top-color: #1f3c18;
+}
+
+.service-map-marker span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 3px solid white;
+  border-radius: 50% 50% 50% 6px;
+  background: #2f5d18;
+  color: white;
+  font: 700 14px "Plus Jakarta Sans", sans-serif;
+  box-shadow: 0 3px 12px rgb(15 31 11 / 30%);
+}
+
 @theme {
   --font-sans:
     "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",

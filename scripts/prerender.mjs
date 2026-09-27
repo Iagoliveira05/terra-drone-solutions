@@ -4,6 +4,8 @@ import { createElement } from "react";
 import { renderToString } from "react-dom/server";
 
 const server = await createServer({
+  // Keep build-time rendering from invalidating the running dev server cache.
+  cacheDir: "node_modules/.vite-prerender",
   server: { middlewareMode: true, hmr: false, watch: null },
   appType: "custom",
 });
