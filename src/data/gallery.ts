@@ -76,7 +76,7 @@ export const GALLERY: GalleryItem[] = [
   }),
   g("drone-detalhe-pulverizador", 1280, 0.563, {
     alt: "Detalhe do conjunto de pulverização e bicos do drone",
-    title: "Bicos de baixa deriva",
+    title: "Equipamento em detalhes",
     caption:
       "Bicos antideriva mantêm a calda dentro da área e protegem pomares vizinhos, riachos e nascentes.",
     tag: "Pulverização",
@@ -97,7 +97,7 @@ export const GALLERY: GalleryItem[] = [
   }),
   g("drone-material-divulgacao", 1280, 0.563, {
     alt: "Drone posicionado para apresentação do serviço",
-    title: "Nosso equipamento em campo",
+    title: "Nosso equipamento em exposição",
     caption:
       "Material próprio de trabalho, apresentado a cada produtor durante a visita técnica de avaliação da área.",
     tag: "Atendimento",
@@ -114,6 +114,20 @@ export const GALLERY: GalleryItem[] = [
     title: "Janela de aplicação monitorada",
     caption:
       "Acompanhamos as condições ambientais antes de decolar para aproveitar a janela ideal de cada dia.",
+    tag: "Atendimento",
+  }),
+  g("drone-operacao-lavoura", 900, 0.563, {
+    alt: "Operação agrícola com drone em área rural",
+    title: "Operação em campo",
+    caption:
+      "Equipamento preparado para uma operação precisa, com planejamento adaptado às condições da lavoura.",
+    tag: "Pulverização",
+  }),
+  g("drone-equipamento-campo", 900, 0.563, {
+    alt: "Drone agrícola apresentado em área rural",
+    title: "Tecnologia pronta para o campo",
+    caption:
+      "Um olhar mais próximo sobre o equipamento usado nas operações da Terra Drone Solutions.",
     tag: "Atendimento",
   }),
 ];

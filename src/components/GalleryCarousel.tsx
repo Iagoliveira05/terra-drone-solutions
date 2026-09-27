@@ -184,9 +184,6 @@ function Slide({ item }: { item: GalleryItem }) {
 
       {/* Etiqueta sobre a foto */}
       <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-agro-950/95 via-agro-950/55 to-transparent p-3 sm:p-5">
-        <span className="inline-block rounded-full bg-lime-400/25 px-2.5 py-0.5 text-[10px] font-bold tracking-wide text-lime-200 uppercase ring-1 ring-lime-300/40 sm:text-[11px]">
-          {item.tag}
-        </span>
         <h3 className="mt-1.5 text-sm leading-tight font-bold text-white sm:text-base">
           {item.title}
         </h3>
