@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { GALLERY, type GalleryItem } from "../data/gallery";
 
@@ -18,6 +18,13 @@ const AUTOPLAY_MS = 6500;
  */
 export function GalleryCarousel() {
   const [i, setI] = useState(0);
+  const [navigationVersion, setNavigationVersion] = useState(0);
+  const autoplayTimer = useRef<number | undefined>(undefined);
+
+  const resetAutoplay = useCallback(() => {
+    window.clearTimeout(autoplayTimer.current);
+    setNavigationVersion((version) => version + 1);
+  }, []);
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
@@ -33,12 +40,14 @@ export function GalleryCarousel() {
   const count = Math.ceil(GALLERY.length / perSlide);
 
   const go = useCallback(
-    (dir: 1 | -1) =>
+    (dir: 1 | -1) => {
+      resetAutoplay();
       setI((cur) => {
         const safe = Math.min(cur, count - 1);
         return (safe + dir + count) % count;
-      }),
-    [count],
+      });
+    },
+    [count, resetAutoplay],
   );
 
   // Pré-carrega as imagens para o autoplay nunca revelar slide vazio.
@@ -50,9 +59,12 @@ export function GalleryCarousel() {
   }, []);
 
   useEffect(() => {
-    const timer = window.setInterval(() => go(1), AUTOPLAY_MS);
-    return () => window.clearInterval(timer);
-  }, [go]);
+    if (count <= 1) return;
+
+    // Cada slide recebe o tempo completo, inclusive apos navegacao manual.
+    autoplayTimer.current = window.setTimeout(() => go(1), AUTOPLAY_MS);
+    return () => window.clearTimeout(autoplayTimer.current);
+  }, [count, go, navigationVersion]);
 
   // O índice é derivado e sempre fica dentro do intervalo válido: ao
   // rotar a tela, `count` muda e `i` é recortado sem provocar render
@@ -133,7 +145,10 @@ export function GalleryCarousel() {
                 )}
                 <button
                   type="button"
-                  onClick={() => setI(n)}
+                  onClick={() => {
+                    resetAutoplay();
+                    setI(n);
+                  }}
                   aria-label={`Ir para a foto ${n + 1}`}
                   aria-current={n === index}
                   className="flex h-10 w-8 items-center justify-center"
