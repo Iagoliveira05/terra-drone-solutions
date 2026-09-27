@@ -1,0 +1,217 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans:
+    "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+
+  /* Agro — verde principal da identidade */
+  --color-agro-50: #f2f8ec;
+  --color-agro-100: #e2efd3;
+  --color-agro-200: #c5dfa8;
+  --color-agro-300: #9bcb74;
+  --color-agro-400: #6fb043;
+  --color-agro-500: #4f9526;
+  --color-agro-600: #3a781b;
+  --color-agro-700: #2f5d18;
+  --color-agro-800: #274a19;
+  --color-agro-900: #1f3c18;
+  --color-agro-950: #0f1f0b;
+
+  /* Deere — verde escuro da identidade */
+  --color-deere-50: #eef5e8;
+  --color-deere-100: #d9e8c9;
+  --color-deere-200: #b2d096;
+  --color-deere-300: #82b263;
+  --color-deere-400: #4e8c28;
+  --color-deere-500: #36701c;
+  --color-deere-600: #28580f;
+  --color-deere-700: #22460d;
+  --color-deere-800: #1d3a0c;
+  --color-deere-900: #182f0b;
+  --color-deere-950: #0c1906;
+
+  /* Sol — âmbar/amarelo da identidade */
+  --color-sun-50: #fffaeb;
+  --color-sun-100: #fef1c6;
+  --color-sun-200: #ffe188;
+  --color-sun-300: #ffcc47;
+  --color-sun-400: #ffb920;
+  --color-sun-500: #f99807;
+  --color-sun-600: #dd6f02;
+  --color-sun-700: #b74d06;
+  --color-sun-800: #943b0c;
+  --color-sun-900: #7a310d;
+  --color-sun-950: #421705;
+
+  /* Limão — apoio claro da identidade */
+  --color-lime-50: #f7fee7;
+  --color-lime-100: #ecfccb;
+  --color-lime-200: #d9f99d;
+  --color-lime-300: #bef264;
+  --color-lime-400: #a3e635;
+  --color-lime-500: #84cc16;
+  --color-lime-600: #65a30d;
+  --color-lime-700: #4d7c0f;
+  --color-lime-800: #3e6212;
+  --color-lime-900: #335112;
+  --color-lime-950: #1a2d08;
+
+  /* Solo — marrom da identidade */
+  --color-soil-50: #faf6f1;
+  --color-soil-100: #f2e9dc;
+  --color-soil-200: #e3d1ba;
+  --color-soil-300: #cfb18c;
+  --color-soil-400: #b78d61;
+  --color-soil-500: #9d6f45;
+  --color-soil-600: #825737;
+  --color-soil-700: #694630;
+  --color-soil-800: #553a2b;
+  --color-soil-900: #473126;
+  --color-soil-950: #281a13;
+
+  /* Metal */
+  --color-steel-50: #f7f8fa;
+  --color-steel-100: #eef0f4;
+  --color-steel-200: #dde1e9;
+  --color-steel-300: #c1c8d5;
+  --color-steel-400: #98a2b6;
+  --color-steel-500: #768197;
+  --color-steel-600: #5d6678;
+  --color-steel-700: #4a5262;
+  --color-steel-800: #3f4552;
+  --color-steel-900: #383d47;
+  --color-steel-950: #22252c;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-white text-steel-800 antialiased;
+  }
+
+  ::selection {
+    @apply bg-agro-500 text-white;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  /* Espaçamento vertical consistente, mais compacto no mobile. */
+  .section-pad {
+    @apply py-16 sm:py-20 md:py-28;
+  }
+
+  .section-title {
+    @apply text-[1.75rem] font-extrabold tracking-tight text-agro-950 sm:text-4xl;
+  }
+
+  .section-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-agro-50 px-3 py-1.5 text-[11px] font-semibold tracking-wide text-agro-700 uppercase ring-1 ring-agro-200 sm:px-3.5 sm:text-xs;
+  }
+
+  /* Alvo de toque mínimo de 44px nos controles, conforme WCAG. */
+  .btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-agro-600 px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-agro-600/25 transition hover:bg-agro-700 hover:shadow-agro-700/30 focus-visible:ring-agro-600 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-steel-200 bg-white px-6 py-3.5 text-sm font-semibold text-agro-900 shadow-sm transition hover:border-agro-300 hover:bg-agro-50 focus-visible:ring-agro-500 focus-visible:ring-offset-2 focus-visible:outline-none active:scale-[0.98];
+  }
+
+  .card-base {
+    @apply rounded-3xl border border-steel-200/80 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:border-agro-200 hover:shadow-xl hover:shadow-agro-900/5;
+  }
+}
+
+@layer utilities {
+  /* Animações de entrada ao rolar (observadas em <Reveal />) */
+  @keyframes tds-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-reveal {
+    animation: tds-reveal 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes tds-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: tds-float 7s ease-in-out infinite;
+  }
+
+  @keyframes tds-pulse-ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    100% {
+      transform: scale(1.8);
+      opacity: 0;
+    }
+  }
+
+  .pulse-ring {
+    position: relative;
+  }
+  .pulse-ring::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px;
+    background: #25d366;
+    z-index: -1;
+    animation: tds-pulse-ring 2.6s ease-out infinite;
+  }
+
+  @keyframes fadeSlide {
+    from {
+      opacity: 0;
+      transform: translateX(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .bg-grid-agro {
+    background-image:
+      linear-gradient(to right, rgba(54, 112, 28, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(54, 112, 28, 0.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-reveal,
+  .animate-float,
+  .pulse-ring::after {
+    animation: none;
+  }
+}

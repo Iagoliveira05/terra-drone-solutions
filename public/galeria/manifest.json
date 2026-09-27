@@ -1,0 +1,74 @@
+[
+  {
+    "name": "apresentacao-produtores",
+    "width": 1280,
+    "ratio": 0.563,
+    "orient": "retrato"
+  },
+  {
+    "name": "atendimento-produtor",
+    "width": 1280,
+    "ratio": 0.563,
+    "orient": "retrato"
+  },
+  {
+    "name": "drone-detalhe-pulverizador",
+    "width": 1280,
+    "ratio": 0.563,
+    "orient": "retrato"
+  },
+  {
+    "name": "drone-encosta-serra",
+    "width": 1179,
+    "ratio": 1.654,
+    "orient": "paisagem"
+  },
+  {
+    "name": "drone-estande-evento",
+    "width": 1280,
+    "ratio": 1.778,
+    "orient": "paisagem"
+  },
+  {
+    "name": "drone-estande-portao",
+    "width": 1280,
+    "ratio": 0.563,
+    "orient": "retrato"
+  },
+  {
+    "name": "drone-material-divulgacao",
+    "width": 1280,
+    "ratio": 0.563,
+    "orient": "retrato"
+  },
+  {
+    "name": "drone-pastagem-entardecer",
+    "width": 1550,
+    "ratio": 0.761,
+    "orient": "retrato"
+  },
+  {
+    "name": "drone-pastagem-vale",
+    "width": 1591,
+    "ratio": 0.741,
+    "orient": "retrato"
+  },
+  {
+    "name": "drone-pulverizando-milho",
+    "width": 1600,
+    "ratio": 0.597,
+    "orient": "retrato"
+  },
+  {
+    "name": "equipamento-pulverizacao",
+    "width": 1280,
+    "ratio": 0.563,
+    "orient": "retrato"
+  },
+  {
+    "name": "tanque-pulverizacao-encosta",
+    "width": 1179,
+    "ratio": 1.647,
+    "orient": "paisagem"
+  }
+]
