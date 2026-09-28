@@ -9,6 +9,10 @@ export const COMPANY = {
   foundedYear: 2024,
   founder: "Gustavo Pereira Gonçalves",
   role: "Responsável técnico",
+  headquarters: [
+    { city: "Resende", state: "RJ" },
+    { city: "Lorena", state: "SP" },
+  ],
   address: {
     street: "Rua Luiz Pistarini, 30 — Sala 211",
     district: "Campos Elíseos",
@@ -17,6 +21,10 @@ export const COMPANY = {
     zip: "27700-000",
   },
 } as const;
+
+export const HEADQUARTERS_LABEL = COMPANY.headquarters
+  .map(({ city, state }) => `${city} - ${state}`)
+  .join(" e ");
 
 /** Número apenas com dígitos, formato internacional (Brasil). */
 export const WHATSAPP_NUMBER = "5521995329024";

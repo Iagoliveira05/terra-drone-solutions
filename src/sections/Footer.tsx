@@ -1,5 +1,5 @@
 import { Camera, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
-import { COMPANY, CONTACT, NAV_LINKS, whatsappLink } from "../data/site";
+import { COMPANY, CONTACT, HEADQUARTERS_LABEL, NAV_LINKS, whatsappLink } from "../data/site";
 import { Logo } from "../components/Logo";
 
 export function Footer() {
@@ -24,7 +24,7 @@ export function Footer() {
             </div>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-steel-600">
               Pulverização agrícola de precisão e mapeamento aéreo com drones.
-              Sediada em Resende - RJ, atendendo o Vale do Paraíba.
+              Com sedes em {HEADQUARTERS_LABEL}, atendendo o Vale do Paraíba.
             </p>
           </div>
 
@@ -95,6 +95,8 @@ export function Footer() {
                   aria-hidden="true"
                 />
                 <span>
+                  Sedes: {HEADQUARTERS_LABEL}
+                  <br />
                   {COMPANY.address.street}
                   <br />
                   {COMPANY.address.district} - {COMPANY.address.city}/

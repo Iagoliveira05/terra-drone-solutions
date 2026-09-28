@@ -1,4 +1,4 @@
-import { COMPANY } from "../data/site";
+import { HEADQUARTERS_LABEL } from "../data/site";
 import { ServiceAreaMap } from "../components/ServiceAreaMap";
 import { Reveal } from "../components/Reveal";
 import { SectionHeading } from "../components/SectionHeading";
@@ -11,7 +11,7 @@ export function ServiceArea() {
           <SectionHeading
             eyebrow="Área de atuação"
             title={<>Onde <span className="text-agro-600">atendemos</span></>}
-            description={`Nossa sede fica em ${COMPANY.address.city} - ${COMPANY.address.state}.`}
+            description={`Nossas sedes ficam em ${HEADQUARTERS_LABEL}.`}
           />
         </Reveal>
         <Reveal className="mt-10 sm:mt-14">

@@ -31,6 +31,16 @@ try {
         image: url + "galeria/drone-pulverizando-milho.jpg",
         telephone: "+" + WHATSAPP_NUMBER,
         email: CONTACT.email,
+        location: COMPANY.headquarters.map(({ city, state }) => ({
+          "@type": "Place",
+          name: `Sede ${city} - ${state}`,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: city,
+            addressRegion: state,
+            addressCountry: "BR",
+          },
+        })),
         address: {
           "@type": "PostalAddress",
           streetAddress: COMPANY.address.street + ", " + COMPANY.address.district,

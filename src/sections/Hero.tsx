@@ -1,5 +1,5 @@
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
-import { COMPANY, STATS, whatsappLink } from "../data/site";
+import { COMPANY, HEADQUARTERS_LABEL, STATS, whatsappLink } from "../data/site";
 import { Reveal } from "../components/Reveal";
 
 export function Hero() {
@@ -19,7 +19,7 @@ export function Hero() {
           <Reveal>
             <p className="section-eyebrow">
               <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-              Agricultura de precisão · Resende - RJ
+              Agricultura de precisão · {HEADQUARTERS_LABEL}
             </p>
           </Reveal>
 
