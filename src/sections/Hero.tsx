@@ -1,3 +1,5 @@
+import { TiltSurface } from "../components/TiltSurface";
+import { SprayExperience } from "../components/SprayExperience";
 import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
 import { COMPANY, HEADQUARTERS_LABEL, STATS, whatsappLink } from "../data/site";
 import { Reveal } from "../components/Reveal";
@@ -6,7 +8,7 @@ export function Hero() {
   return (
     <section
       id="topo"
-      className="relative overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-16 md:pt-36 md:pb-24"
+      className="hero-section relative isolate overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-16 md:pt-36 md:pb-24"
     >
       {/* Fundo */}
       <div className="absolute inset-0 -z-10 bg-linear-to-b from-agro-50 via-lime-50 to-white" />
@@ -78,6 +80,7 @@ export function Hero() {
                 <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </a>
             </div>
+            <SprayExperience />
           </Reveal>
 
           <Reveal delay={330}>
@@ -98,8 +101,9 @@ export function Hero() {
         </div>
 
         <Reveal delay={200} className="relative order-last lg:order-none">
-          <div className="relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
-            <div className="absolute -inset-3 -z-10 rounded-4xl bg-linear-to-br from-agro-200/50 to-sun-200/50 blur-2xl sm:-inset-4" />
+          <TiltSurface className="hero-scene relative mx-auto max-w-sm sm:max-w-md lg:max-w-none">
+            <div className="hero-orbit" aria-hidden="true" />
+            <div className="hero-photo relative">
             <img
               src="/galeria/drone-pulverizando-milho.jpg"
               width={1600}
@@ -107,9 +111,21 @@ export function Hero() {
               alt="Drone agrícola pulverizando sobre uma lavoura de milho"
               fetchPriority="high"
               decoding="async"
-              className="aspect-4/3 w-full rounded-3xl object-cover shadow-2xl shadow-agro-950/15 ring-1 ring-white sm:aspect-auto sm:rounded-4xl"
+              className="hero-image aspect-4/3 w-full object-cover sm:aspect-4/5"
             />
 
+            <div className="hero-photo-shade" aria-hidden="true" />
+            <div className="crop-scan" aria-hidden="true"><span /></div>
+            <svg className="flight-route" viewBox="0 0 400 500" fill="none" aria-hidden="true">
+              <path className="flight-route-base" d="M55 350V220Q55 200 75 200H325Q345 200 345 180V155Q345 135 325 135H75Q55 135 55 115V90" />
+              <path className="flight-route-trace" d="M55 350V220Q55 200 75 200H325Q345 200 345 180V155Q345 135 325 135H75Q55 135 55 115V90" />
+              <circle cx="55" cy="350" r="6" fill="#bef264" />
+              <circle cx="55" cy="90" r="5" stroke="white" strokeWidth="2" />
+            </svg>
+            <div className="hero-caption"><span className="hero-status-dot" /> TECNOLOGIA A SERVIÇO DO CAMPO</div>
+            <div className="hero-photo-label"><span>Precisão em cada voo.</span><span>Mais cuidado com a sua lavoura.</span></div>
+            </div>
+            <div className="hero-depth-label" aria-hidden="true"><span>01 / AGRICULTURA DE PRECISÃO</span><span>TERRA DRONE ↗</span></div>
             {/* Selo flutuante */}
             <div className="animate-float absolute -bottom-4 left-3 flex items-center gap-2.5 rounded-2xl border border-steel-200 bg-white/95 px-3.5 py-2.5 shadow-xl backdrop-blur sm:-bottom-5 sm:left-6 sm:gap-3 sm:px-4 sm:py-3">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-agro-50 text-agro-600">
@@ -124,7 +140,7 @@ export function Hero() {
                 </p>
               </div>
             </div>
-          </div>
+          </TiltSurface>
         </Reveal>
       </div>
     </section>

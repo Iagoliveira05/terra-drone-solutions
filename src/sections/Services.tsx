@@ -1,3 +1,4 @@
+import { TiltSurface } from "../components/TiltSurface";
 import { Check } from "lucide-react";
 import { SERVICES } from "../data/site";
 import { Icon } from "../components/Icon";
@@ -37,7 +38,7 @@ export function Services() {
             const accent = ACCENTS[service.accent];
             return (
               <Reveal as="li" key={service.id} delay={index * 80}>
-                <article
+                <TiltSurface as="article"
                   id={service.id}
                   className={`card-base group h-full p-6 sm:p-7 ${accent.glow}`}
                 >
@@ -68,7 +69,7 @@ export function Services() {
                       </li>
                     ))}
                   </ul>
-                </article>
+                </TiltSurface>
               </Reveal>
             );
           })}
