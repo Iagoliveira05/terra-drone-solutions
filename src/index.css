@@ -9,18 +9,28 @@
 }
 
 @keyframes coverage-breathe {
-  0%, 100% { fill-opacity: 0.28; }
-  50% { fill-opacity: 0.36; }
+  0%,
+  100% {
+    fill-opacity: 0.28;
+  }
+  50% {
+    fill-opacity: 0.36;
+  }
 }
 
 @keyframes coverage-flow {
-  from { stroke-dashoffset: 0; }
-  to { stroke-dashoffset: -192; }
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -192;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .service-map-coverage,
-  .service-map-flow {
+  .service-map-flow,
+  .service-map-marker.is-headquarters span {
     animation: none;
   }
 }
@@ -31,7 +41,9 @@
   background: #1f3c18;
   color: white;
   padding: 8px 12px;
-  font: 700 13px "Plus Jakarta Sans", sans-serif;
+  font:
+    700 13px "Plus Jakarta Sans",
+    sans-serif;
 }
 
 .leaflet-tooltip-top.service-map-headquarters::before {
@@ -42,14 +54,48 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: 3px solid white;
+  width: 12px;
+  height: 12px;
+  border: 2px solid white;
   border-radius: 50% 50% 50% 6px;
   background: #2f5d18;
   color: white;
-  font: 700 14px "Plus Jakarta Sans", sans-serif;
+  font:
+    700 14px "Plus Jakarta Sans",
+    sans-serif;
   box-shadow: 0 3px 12px rgb(15 31 11 / 30%);
+}
+
+.service-map-marker.is-headquarters span {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f99807;
+  box-shadow:
+    0 0 0 3px rgb(249 152 7 / 16%),
+    0 4px 13px rgb(15 31 11 / 30%);
+  animation: service-marker-pulse 2.4s ease-in-out infinite;
+}
+
+.leaflet-tooltip.service-map-city {
+  border: 1px solid #c1c8d5;
+  border-radius: 7px;
+  background: rgb(255 255 255 / 95%);
+  color: #274a19;
+  padding: 5px 8px;
+  font:
+    600 11px "Plus Jakarta Sans",
+    sans-serif;
+}
+
+@keyframes service-marker-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
 }
 
 @theme {

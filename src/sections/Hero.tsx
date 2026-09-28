@@ -45,7 +45,7 @@ export function Hero() {
                   />
                 </svg>
               </span>{" "}
-              em Resende e no Vale do Paraíba.
+              no Vale do Paraíba.
             </h1>
           </Reveal>
 

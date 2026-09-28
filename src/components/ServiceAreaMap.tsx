@@ -41,6 +41,7 @@ export function ServiceAreaMap() {
 
         map = L.map(container, { scrollWheelZoom: false });
         mapRef.current = map;
+        const activeMap = map;
         const coverage = L.geoJSON(geometry, {
           style: {
             color: "#426b98",
@@ -102,20 +103,32 @@ export function ServiceAreaMap() {
           interactive: false,
         }).addTo(map);
 
-        const headquarters = HEADQUARTERS;
-        if (headquarters) {
-          const label = document.createElement("strong");
-          label.textContent = "Resende · Sede";
-          L.tooltip({
-            permanent: true,
-            direction: "top",
-            className: "service-map-headquarters",
-            opacity: 1,
-          })
-            .setLatLng([headquarters.latitude, headquarters.longitude])
-            .setContent(label)
-            .addTo(map);
-        }
+        SERVICE_LOCATIONS.forEach((location) => {
+          const isHeadquarters = location.role === "Sede";
+          const icon = L.divIcon({
+            className: `service-map-marker${isHeadquarters ? " is-headquarters" : ""}`,
+            html: `<span aria-hidden="true"></span>`,
+            iconSize: isHeadquarters ? [16, 16] : [12, 12],
+            iconAnchor: isHeadquarters ? [8, 8] : [6, 6],
+          });
+          const marker = L.marker([location.latitude, location.longitude], {
+            icon,
+            title: `${location.name} · ${location.role}`,
+          }).addTo(activeMap);
+
+          marker.bindTooltip(
+            `${location.name}${isHeadquarters ? " · Sede" : ""}`,
+            {
+              permanent: isHeadquarters,
+              direction: "top",
+              className: isHeadquarters
+                ? "service-map-headquarters"
+                : "service-map-city",
+              opacity: 1,
+              offset: [0, isHeadquarters ? -16 : -12],
+            },
+          );
+        });
         resizeObserver = new ResizeObserver(() => map?.invalidateSize());
         resizeObserver.observe(container);
         setStatus("ready");
