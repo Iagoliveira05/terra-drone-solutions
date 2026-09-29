@@ -334,6 +334,9 @@
 .drone-showcase-heading { padding: 1.25rem 1rem .5rem; display: flex; align-items: center; justify-content: center; gap: .6rem; font-size: .55rem; font-weight: 700; letter-spacing: .14em; }
 .drone-showcase-heading > span { width: 5px; height: 5px; border-radius: 50%; background: #4f9526; box-shadow: 0 0 0 4px rgb(79 149 38 / 10%); }
 .drone-stage { position: relative; flex: 1; min-height: 0; width: 100%; }
+.drone-loading { position: absolute; inset: 0; display: grid; place-items: center; color: #5d6678; font-size: .75rem; letter-spacing: .05em; }
+.drone-showcase[data-status="loading"] .drone-canvas-host { opacity: 0; }
+.drone-showcase[data-status="ready"] .drone-canvas-host { opacity: 1; transition: opacity .35s ease; }
 .drone-canvas-host { position: absolute; inset: 0; pointer-events: none; }
 .drone-canvas-host canvas { display: block; width: 100%; height: 100%; }
 .drone-poster { position: absolute; inset: 6% 5%; width: 90%; height: 88%; border-radius: 1.5rem; object-fit: cover; }

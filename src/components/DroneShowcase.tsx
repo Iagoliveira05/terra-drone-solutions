@@ -86,7 +86,8 @@ export function DroneShowcase() {
     <div className="drone-showcase" data-status={status}>
       <div className="drone-showcase-heading"><span /> TECNOLOGIA QUE CULTIVA RESULTADOS</div>
       <div className="drone-stage" role="img" aria-label="Drone agrícola com quatro hélices, tanque e bicos de pulverização. A decolagem acompanha a rolagem da página.">
-        {status !== "ready" && <img className="drone-poster" src="/galeria/drone-detalhe-pulverizador.jpg" width="1200" height="900" alt="" decoding="async" />}
+        {status === "loading" && <span className="drone-loading" aria-hidden="true">Preparando voo…</span>}
+        {status === "unavailable" && <img className="drone-poster" src="/galeria/drone-detalhe-pulverizador.jpg" width="1200" height="900" alt="" decoding="async" />}
         <div ref={host} className="drone-canvas-host" aria-hidden="true" />
         <span className="drone-flight-label" aria-hidden="true">VOO PLANEJADO · APLICAÇÃO PRECISA</span>
       </div>
