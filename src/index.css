@@ -186,10 +186,17 @@
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   body {
     @apply bg-white text-steel-800 antialiased;
+  }
+
+  :where(a, button):focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
   }
 
   ::selection {
@@ -344,6 +351,30 @@
 .drone-showcase-caption { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid rgb(79 149 38 / 20%); padding: 1rem max(1.25rem, 5vw); font-size: .6rem; color: #5d6678; }
 .drone-scroll-cue { display: flex; align-items: center; gap: .6rem; color: #2f5d18; }
 .drone-scroll-cue > span { font-weight: 600; }
+/* Keep the same composition while making captions readable on small screens. */
+@media (max-width: 767px) {
+  .drone-showcase-heading { font-size: .6875rem; letter-spacing: .08em; text-align: center; }
+  .drone-flight-label { width: 100%; padding-inline: 1rem; font-size: .625rem; letter-spacing: .08em; white-space: normal; text-align: center; }
+  .drone-showcase-caption { flex-wrap: wrap; justify-content: center; gap: .5rem 1rem; font-size: .75rem; text-align: center; }
+}
+
+@media (max-width: 639px) {
+  .section-eyebrow { max-width: 100%; font-size: .75rem; }
+  .section-eyebrow svg, .btn-primary svg, .btn-secondary svg { flex-shrink: 0; }
+  .btn-primary, .btn-secondary { padding-inline: 1rem; text-align: center; }
+  .btn-primary:focus-visible, .btn-secondary:focus-visible { outline: 2px solid var(--color-agro-700); outline-offset: 4px; }
+  #contato svg { flex-shrink: 0; }
+  .hero-copy h1 { font-size: clamp(1.875rem, 8vw, 2.5rem); }
+  .section-title { font-size: clamp(1.625rem, 7vw, 1.75rem); line-height: 1.25; }
+  #servicos article { padding: 1.25rem; }
+  main .text-sm { font-size: .9375rem; }
+  footer { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
+  footer a { display: inline-flex; align-items: center; min-height: 44px; }
+  footer li:has(> a) { align-items: center; }
+  footer li > a { min-width: 0; overflow-wrap: anywhere; }
+  footer .text-xs { line-height: 1.6; text-align: center; }
+  .leaflet-container .leaflet-control-zoom a { width: 44px; height: 44px; line-height: 44px; }
+}
 @media (min-width: 768px) {
   .hero-flight-intro { padding-top: 80px; }
   .hero-drone-column { top: 80px; }

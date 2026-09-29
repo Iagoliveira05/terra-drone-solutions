@@ -199,7 +199,7 @@ export function ServiceAreaMap() {
           ref={containerRef}
           role="region"
           aria-label="Mapa das cidades atendidas e áreas aproximadas de cobertura"
-          className="h-[380px] w-full bg-steel-100 sm:h-[520px]"
+          className="h-[clamp(280px,60svh,380px)] w-full bg-steel-100 sm:h-[520px]"
         />
         {status !== "ready" && (
           <div

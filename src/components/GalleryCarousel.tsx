@@ -17,6 +17,7 @@ const AUTOPLAY_MS = 6500;
  * deixaria cada foto com ~110px, apertado demais.
  */
 export function GalleryCarousel() {
+  const galleryRef = useRef<HTMLDivElement>(null);
   const [i, setI] = useState(0);
   const [navigationVersion, setNavigationVersion] = useState(0);
   const autoplayTimer = useRef<number | undefined>(undefined);
@@ -38,6 +39,7 @@ export function GalleryCarousel() {
 
   const perSlide = isDesktop ? 2 : 1;
   const count = Math.ceil(GALLERY.length / perSlide);
+  const index = Math.min(i, count - 1);
 
   const go = useCallback(
     (dir: 1 | -1) => {
@@ -50,13 +52,22 @@ export function GalleryCarousel() {
     [count, resetAutoplay],
   );
 
-  // Pré-carrega as imagens para o autoplay nunca revelar slide vazio.
+  // Prepare only the next slide when the gallery is near the viewport.
   useEffect(() => {
-    GALLERY.forEach((item) => {
-      const img = new Image();
-      img.src = item.src;
-    });
-  }, []);
+    const gallery = galleryRef.current;
+    if (!gallery) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      const nextStart = ((index + 1) % count) * perSlide;
+      GALLERY.slice(nextStart, nextStart + perSlide).forEach((item) => {
+        const img = new Image();
+        img.src = item.src;
+      });
+      observer.disconnect();
+    }, { rootMargin: "200px" });
+    observer.observe(gallery);
+    return () => observer.disconnect();
+  }, [index, count, perSlide]);
 
   useEffect(() => {
     if (count <= 1) return;
@@ -69,7 +80,6 @@ export function GalleryCarousel() {
   // O índice é derivado e sempre fica dentro do intervalo válido: ao
   // rotar a tela, `count` muda e `i` é recortado sem provocar render
   // extra nem efeito colateral.
-  const index = Math.min(i, count - 1);
   const start = index * perSlide;
   const current = GALLERY.slice(start, start + perSlide);
 
@@ -78,7 +88,7 @@ export function GalleryCarousel() {
       type="button"
       onClick={() => go(dir)}
       aria-label={label}
-      className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-steel-200 bg-white text-steel-700 shadow-sm transition hover:border-agro-300 hover:bg-agro-50 hover:text-agro-700 active:scale-95"
+      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-steel-200 bg-white text-steel-700 shadow-sm transition hover:border-agro-300 hover:bg-agro-50 hover:text-agro-700 active:scale-95 sm:h-10 sm:w-10"
     >
       {dir === -1 ? (
         <ChevronLeft className="h-5 w-5" />
@@ -89,7 +99,7 @@ export function GalleryCarousel() {
   );
 
   return (
-    <div>
+    <div ref={galleryRef}>
       {isDesktop ? (
         <div className="flex items-center gap-4">
           {arrow(-1, "Fotos anteriores")}
@@ -121,7 +131,7 @@ export function GalleryCarousel() {
 
       {/* Paginação compacta: 12 indicadores não caberiam em 390px.
           Mostra apenas vizinho do atual, com total ao lado. */}
-      <div className="mt-4 flex items-center justify-center gap-3 sm:mt-5">
+      <div className="mt-4 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 sm:mt-5">
         <ul className="flex items-center gap-0.5">
           {Array.from({ length: count })
             .map((_s, n) => n)
@@ -151,7 +161,7 @@ export function GalleryCarousel() {
                   }}
                   aria-label={`Ir para a foto ${n + 1}`}
                   aria-current={n === index}
-                  className="flex h-10 w-8 items-center justify-center"
+                  className="flex h-11 w-11 items-center justify-center sm:h-10 sm:w-8"
                 >
                   <span
                     className={`block h-2 rounded-full transition-all ${
@@ -179,6 +189,7 @@ function Slide({ item }: { item: GalleryItem }) {
         width={item.width}
         height={Math.round(item.width / item.ratio)}
         decoding="async"
+        loading="lazy"
         style={{ objectPosition: item.objectPosition }}
         className="aspect-4/3 w-full object-cover transition duration-700 group-hover:scale-105"
       />

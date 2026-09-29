@@ -1,14 +1,29 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
 import { COMPANY, NAV_LINKS, whatsappLink } from "../data/site";
 import { Logo } from "./Logo";
 
 export function Header() {
   const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    document.querySelector<HTMLAnchorElement>("#mobile-navigation a")?.focus({ preventScroll: true });
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [open]);
 
   // Fecha o menu ao voltar para o desktop.
   useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
+    const mq = window.matchMedia("(min-width: 1024px)");
     const handler = (e: MediaQueryListEvent) => e.matches && setOpen(false);
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
@@ -34,7 +49,7 @@ export function Header() {
         </a>
 
         <nav
-          className="hidden items-center gap-1 md:flex"
+          className="hidden items-center gap-1 lg:flex"
           aria-label="Navegação principal"
         >
           {NAV_LINKS.map((link) => (
@@ -59,11 +74,13 @@ export function Header() {
           </a>
 
           <button
+            ref={menuButton}
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             aria-expanded={open}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-steel-200 bg-white/90 text-agro-900 shadow-sm transition hover:bg-agro-50 md:hidden"
+            aria-controls={open ? "mobile-navigation" : undefined}
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-steel-200 bg-white/90 text-agro-900 shadow-sm transition hover:bg-agro-50 lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -71,16 +88,17 @@ export function Header() {
       </div>
 
       {/* Drawer mobile */}
-      {open && (
+      {open && createPortal(
         <>
           {/* Overlay */}
           <button
             type="button"
             aria-label="Fechar menu ao tocar fora"
             onClick={() => setOpen(false)}
-            className="fixed inset-0 top-16 z-40 bg-steel-950/40 backdrop-blur-sm md:hidden"
+            tabIndex={-1}
+            className="fixed inset-0 top-16 z-40 bg-steel-950/40 backdrop-blur-sm md:top-20 lg:hidden"
           />
-          <div className="fixed inset-x-0 top-16 z-40 max-h-[calc(100dvh-4rem)] overflow-y-auto border-b border-steel-200 bg-white pb-4 shadow-2xl md:hidden">
+          <div id="mobile-navigation" className="fixed inset-x-0 top-16 z-50 max-h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain border-b border-steel-200 bg-white pb-4 shadow-2xl md:top-20 md:max-h-[calc(100dvh-5rem)] lg:hidden">
             <nav
               className="container-page flex flex-col pt-3"
               aria-label="Navegação mobile"
@@ -106,7 +124,8 @@ export function Header() {
               </a>
             </nav>
           </div>
-        </>
+        </>,
+        document.body,
       )}
     </header>
   );

@@ -16,8 +16,10 @@ export function WhatsAppFloat() {
       href={whatsappLink()}
       target="_blank"
       rel="noopener noreferrer"
+      tabIndex={visible ? 0 : -1}
+      aria-hidden={!visible}
       aria-label={`Falar no WhatsApp com a ${COMPANY.name} (${CONTACT.whatsappDisplay})`}
-      className={`group fixed right-4 bottom-4 z-50 flex items-center gap-3 rounded-full bg-[#25d366] py-3 pr-4 pl-3.5 text-white shadow-xl shadow-[#25d366]/40 transition-all duration-300 hover:bg-[#1eb85a] sm:right-6 sm:bottom-6 ${
+      className={`group fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[max(1rem,env(safe-area-inset-bottom))] z-30 flex items-center gap-3 rounded-full bg-[#25d366] py-3 pr-4 pl-3.5 text-white shadow-xl shadow-[#25d366]/40 transition-all duration-300 hover:bg-[#1eb85a] sm:right-6 sm:bottom-6 ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
     >
